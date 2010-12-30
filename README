@@ -1,0 +1,37 @@
+
+tinysocks is a small, single-threaded tcp proxy server to run on low budget vps with little resources.
+I wrote it because many of the "big" proxy servers are either multi-threaded, forked, or use too
+many resources.
+
+To compile/run:
+
+You will need gcc tools. On Red-Hat based distros (Fedora/CentOS) this is accomplished by:
+
+     yum -y groupinstall "development tools" "development libraries"
+
+then use make in the respective directory to build the binary.
+
+tinysocks accepts the following switches:
+-d -> debug
+-r -> first 3 bytes of ip range, ex: 10.11.12
+-b -> beginning of the last byte in ip range
+-e -> ending of the last byte in ip range
+-p -> port to listen on
+-a -> ports which you validate to accept connections on
+
+ex:
+./ts -r 10.11.12 -b 20 -e 40 -p 3000 -a 21,80,443 &
+
+this will make the server listen on 10.11.12.20 through 10.11.12.40 on port 3000.
+it will only accept connections that request the server to connect to ports 21, 80, and 443.
+
+./ts -d -r 10.11.12 -b 20 -e 20 -p 3000
+
+this will make the server listen on 10.11.12.20 on port 3000.
+no -a parameter is given. it will accept connections that request the server to connect to all ports.
+also no & at the end, so the server will block the stdin until you ctrl+c quit it
+-d is given so it will print any debug messages
+
+Changelog:
+
+v0.2 - first public release
