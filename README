@@ -1,7 +1,7 @@
 
-tinysocks is a small, single-threaded tcp proxy server to run on low budget vps with little resources.
-I wrote it because many of the "big" proxy servers are either multi-threaded, forked, or use too
-many resources.
+tinysocks is a small, single-threaded tcp (so far only SOCKS 4)proxy server to run on low budget 
+vps with little resources. I wrote it because many of the "big" proxy servers are either 
+multi-threaded, forked, or use too many resources.
 
 To compile/run:
 
